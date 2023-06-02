@@ -1,15 +1,15 @@
 library(imager)
 
 #directory dataset gambar
-setwd('<directory gambar>')
+setwd('E:/Projects/analitika-bisnis/dataset-membersihkan/resized')
 
-#variabel images yang berisi list file gambar dengan ekstensin .jpg
-images <- list.files('<directory gambar>', pattern='jpg')
+#variabel images yang berisi list file gambar dengan ekstensi .jpg
+images <- list.files('E:/Projects/analitika-bisnis/dataset-membersihkan/resized', pattern='jpg')
 
 #proses ekstraksi untuk setiap gambar
 for(x in images){
   
-  setwd('<directory gambar>')
+  setwd('E:/Projects/analitika-bisnis/dataset-membersihkan/resized')
   img <- load.image(x)
   img <- imrotate(img, 180)
   plot(img)
@@ -25,7 +25,7 @@ for(x in images){
   
   plot(cumsum(datax_pca$sdev^2/sum(datax_pca$sdev^2)))
   
-  pc.use <- 20 # explains xx% of variance
+  pc.use <- 10 # explains xx% of variance
   trunc <- datax_pca$x[,1:pc.use] %*% t(datax_pca$rotation[,1:pc.use])
   
   #and add the center (and re-scale) back to data
@@ -52,10 +52,9 @@ for(x in images){
   datay <- datax_pca$x[,1:pc.use]
   
   #proses export ke csv
-  setwd('<directory tempat csv>')
-  name0 <- "csv"
+  setwd('E:/Projects/analitika-bisnis/dataset-membersihkan/csv')
   name <- strsplit(x, "[.]")[[1]][1]
   name2 <- ".csv"
-  filename <- paste(name0,name,name2, sep = "")
+  filename <- paste(name,name2, sep = "")
   write.csv(datay, file = filename)
 }

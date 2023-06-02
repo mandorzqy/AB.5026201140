@@ -4,8 +4,8 @@ import pandas as pd
 import numpy as np
 import os
 
-PC = #jumlah PC
-width = #panjang image
+PC = 10#jumlah PC
+width = 356#panjang image
 formatPrint = 'PC{col}.{row}'
 columnName = ['class']
 for i in range (PC):
@@ -14,7 +14,7 @@ for i in range (PC):
 dataframe = pd.DataFrame(columns=columnName)
 
 #directory dataset .csv
-directory = '<isi directory file csv>' 
+directory = 'E:/Projects/analitika-bisnis/dataset-membersihkan/csv/' 
 for filename in os.listdir(directory):
     if filename.endswith('.csv'):
         df = pd.read_csv(directory + filename, float_precision='round_trip')
@@ -26,4 +26,4 @@ for filename in os.listdir(directory):
         data = data + dd
         dataframe.loc[len(dataframe)] = data
 
-dataframe.to_excel('datasetnew1.xlsx') #export
+dataframe.to_excel('E:/Projects/analitika-bisnis/dataset-menambah data/csv/dataset-menambah-data.xlsx') #export
